@@ -107,10 +107,10 @@ todoInput.addEventListener('keypress', (e) => {
         newTodo.innerHTML = `
             <div class="flex gap-5 items-center">
                 <input type="checkbox" class="checkbox2 hidden">
-                <div class="rounded-full p-[0.5px] hover:bg-gradient-to-tl hover:from-CheckBackground_T hover:to-checkBackground_B"><label class="check2 w-6 h-6 cursor-pointer bg-VeryLightGray dark:bg-VeryDarkDesaturatedBlue z-20  border-[1px] flex items-center justify-center rounded-full"><img src="/images/icon-check.svg" class="checkImg2 hidden "></label></div>
+                <div class="rounded-full p-[0.5px] hover:bg-gradient-to-tl hover:from-CheckBackground_T hover:to-checkBackground_B"><label class="check2 w-6 h-6 cursor-pointer bg-VeryLightGray dark:bg-VeryDarkDesaturatedBlue z-20  border-[1px] flex items-center justify-center rounded-full"><img src="./images/icon-check.svg" class="checkImg2 hidden "></label></div>
                 <span class="todo-text text-VeryDarkGrayishBlue dark:text-LightGrayishBlueHover">${todoInput.value}</span>
             </div>
-            <button class="delete-btn"><img src="/images/icon-cross.svg" alt="delete button"></button>
+            <button class="delete-btn"><img src="./images/icon-cross.svg" alt="delete button"></button>
         `;
 
         // Add the new todo item to the list
@@ -365,10 +365,10 @@ function loadTodosFromLocalStorage() {
             newTodo.innerHTML = `
                 <div class="flex gap-5 items-center">
                     <input type="checkbox" class="checkbox2 hidden" ${todo.checked ? 'checked' : ''}>
-                    <div class="rounded-full p-[0.5px] hover:bg-gradient-to-tl hover:from-CheckBackground_T hover:to-checkBackground_B"><label class="check2 w-6 h-6 cursor-pointer bg-VeryLightGray dark:bg-VeryDarkDesaturatedBlue z-20  border-[1px] flex items-center justify-center rounded-full"><img src="/images/icon-check.svg" class="checkImg2 ${todo.checked ? '' : 'hidden'} "></label></div>
+                    <div class="rounded-full p-[0.5px] hover:bg-gradient-to-tl hover:from-CheckBackground_T hover:to-checkBackground_B"><label class="check2 w-6 h-6 cursor-pointer bg-VeryLightGray dark:bg-VeryDarkDesaturatedBlue z-20  border-[1px] flex items-center justify-center rounded-full"><img src="./images/icon-check.svg" class="checkImg2 ${todo.checked ? '' : 'hidden'} "></label></div>
                     <span class="todo-text ${todo.checked ? 'line-through text-LightGrayishBlue dark:text-VeryDarkGrayishBlue' : 'text-VeryDarkGrayishBlue dark:text-LightGrayishBlueHover'}">${todo.text}</span>
                 </div>
-                <button class="delete-btn"><img src="/images/icon-cross.svg" alt="delete button"></button>
+                <button class="delete-btn"><img src="./images/icon-cross.svg" alt="delete button"></button>
             `;
             todoList.appendChild(newTodo);
             setupTodoItemListeners(newTodo);
