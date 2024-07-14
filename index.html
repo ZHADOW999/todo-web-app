@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="stylesheet" href="/dist/output.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+  <title>Frontend Mentor | Todo app</title>
+  <script>
+    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark')
+    }
+</script>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body class="bg-VeryLightGrayishBlue font-body dark:bg-VeryDarkBlue duration-500 transition-all ease-in-out min-h-[100vh]">
+  <main>
+    <div class="relative">
+      <img src="/images/bg-mobile-dark.jpg" class="md:hidden md:dark:hidden hidden dark:block w-full h-[15rem]" alt="">
+      <img src="/images/bg-mobile-light.jpg" class="md:hidden md:dark:hidden block  dark:hidden w-full h-[15rem] " alt="">
+      <img src="/images/bg-desktop-dark.jpg" class="hidden dark:hidden md:dark:block md:hidden  w-full h-[15rem]" alt="">
+      <img src="/images/bg-desktop-light.jpg" class="dark:hidden md:block md:dark:hidden hidden w-full h-[15rem]" alt="">
+    </div>
+
+    <div class=" top-5 px-6 w-full  md:w-[700px] absolute left-0 right-0 mx-auto">
+      <div class="flex items-center justify-between mb-7">
+        <h1 class="uppercase text-VeryLightGray font-[900] font-body text-6 tracking-wide">todo</h1>
+        <button id="theme-toggle" type="button" class="text-VeryLightGray dark:text-VeryLightGray  ">
+          <svg id="theme-toggle-dark-icon" class="hidden w-8 h-8" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+          <svg id="theme-toggle-light-icon" class="hidden w-8 h-8" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+        </button>
+      </div>
+
+      <div class="flex-col flex justify-center items-center w-full pt-9 ">
+        <div class="w-full relative flex  items-center">
+          <img src="/images/icon-check.svg" id="checkImg" class="hidden">
+          </label>
+          <input type="text" placeholder="Create a new todo..."  class="absolute indent-4 text-3 rounded w-full text-VeryDarkGrayishBlue dark:text-LightGrayishBlue dark:bg-VeryDarkDesaturatedBlue bg-VeryLightGray outline-none border-none focus:border-none focus:outline-none dark:focus:ring-opacity-0 h-14" id="text-input">
+        </div>
+      </div>
+
+      
+       <div class="shadow-2xl rounded-md   dark:bg-VeryDarkDesaturatedBlue bg-VeryLightGray h-auto mt-10 text-VeryDarkBlue dark:text-DarkGrayishBlue">
+        <ul class="">
+          <!-- Placeholder for active and completed messages -->
+          <li id="all-todos" class="border-b-[1px] border-LightGrayishBlue text-center h-14 justify-center items-center hidden">List is empty</li>
+          <li id="no-active-todos" class="border-b-[1px] border-LightGrayishBlue text-center h-14 justify-center items-center hidden">There are no active todos</li>
+          <li id="no-completed-todos" class="border-b-[1px] border-LightGrayishBlue text-center h-14 justify-center items-center hidden">You have no completed todos</li>
+        </ul>
+
+        
+  
+        <div class=" flex items-center justify-between text-1 px-4 py-4 text-VeryDarkGrayishBlue1">
+          <p id="todo-count" class="font-semibold"> items left</p>
+
+          <div class="hidden md:flex  text-VeryDarkGrayishBlue1 font-bold justify-center gap-4  ">
+            <p id="filter-all" class="text-DarkGrayishBlue2  transition-all duration-300 ease-in-out filter-btn active cursor-pointer dark:text-VeryDarkGrayishBlue1 dark:hover:text-LightGrayishBlueHover  hover:text-VeryDarkGrayishBlue1">All</p>
+            <p id="filter-active" class="text-DarkGrayishBlue2  transition-all duration-300 ease-in-out filter-btn active cursor-pointer dark:text-VeryDarkGrayishBlue1 dark:hover:text-LightGrayishBlueHover  hover:text-VeryDarkGrayishBlue1">Active</p>
+            <p id="filter-completed" class="text-DarkGrayishBlue2   transition-all duration-300 ease-in-out filter-btn active cursor-pointer dark:text-VeryDarkGrayishBlue1 dark:hover:text-LightGrayishBlueHover  hover:text-VeryDarkGrayishBlue1">Completed</p>
+            
+          </div>
+            
+          <p id="clear-completed" class="text-DarkGrayishBlue2  font-semibold transition-all duration-300 ease-in-out filter-btn active cursor-pointer dark:text-VeryDarkGrayishBlue1 dark:hover:text-LightGrayishBlueHover  hover:text-VeryDarkGrayishBlue1">Clear Completed</p>
+        </div>
+        
+      </div>
+      <div class=" md:hidden text-VeryDarkGrayishBlue1 font-bold flex justify-center gap-4  py-4 dark:bg-VeryDarkDesaturatedBlue bg-VeryLightGray mt-5 rounded-md">
+        <p id="filter-all-md" class="transition-all duration-300 ease-in-out filter-btn2 active2 cursor-pointer dark:text-VeryDarkGrayishBlue1 dark:hover:text-LightGrayishBlueHover text-DarkGrayishBlue2 hover:text-VeryDarkGrayishBlue1">All</p>
+        <p id="filter-active-md" class="text-DarkGrayishBlue2  transition-all duration-300 ease-in-out filter-btn2 active2 cursor-pointer dark:text-VeryDarkGrayishBlue1 dark:hover:text-LightGrayishBlueHover  hover:text-VeryDarkGrayishBlue1">Active</p>
+        <p id="filter-completed-md" class="text-DarkGrayishBlue2  transition-all duration-300 ease-in-out filter-btn2 active2 cursor-pointer dark:text-VeryDarkGrayishBlue1 dark:hover:text-LightGrayishBlueHover  hover:text-VeryDarkGrayishBlue1">Completed</p>
+        
+      </div>
+
+      <p class="grid place-items-center text-1 text-VeryDarkGrayishBlue1 mt-5">Drag and drop to reoder list</p>
+
+      <div class="attribution bottom-0">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+        Coded by <a href="#">Babalola Victor</a>.
+      </div>
+    </div>
+  
+  </main>
+  
+  
+
+
+  <script src="/dist/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+    --BrightBlue: hsl(220, 98%, 61%);
+--CheckBackground_T: hsl(280, 87%, 65%);
+--checkBackground_B:hsl(192, 100%, 67%);
+    /* light theme */
+--VeryLightGray: hsl(0, 0%, 98%);
+--VeryLightGrayishBlue: hsl(236, 33%, 92%);
+--LightGrayishBlue: hsl(233, 11%, 84%);
+--DarkGrayishBlue2: hsl(236, 9%, 61%);
+--VeryDarkGrayishBlue: hsl(235, 19%, 35%);
+/* dark theme */
+--VeryDarkDesaturatedBlue: hsl(235, 24%, 19%);
+--LightGrayishBlue: hsl(234, 39%, 85%);
+--LightGrayishBlueHover: hsl(236, 33%, 92%);
+--VeryDarkBlue: hsl(235, 21%, 11%);
+--DarkGrayishBlue: hsl(234, 11%, 52%);
+--VeryDarkGrayishBlue1: hsl(233, 14%, 35%);
+--VeryDarkGrayishBlue2: hsl(237, 14%, 26%);
+}
